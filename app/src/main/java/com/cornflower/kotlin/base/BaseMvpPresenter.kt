@@ -1,10 +1,10 @@
-package kotlin.cornflower.com
+package com.cornflower.kotlin.base
 
-class BaseMvpPresenter<V:BaseView>:Presenter<V>{
+open class BaseMvpPresenter<V: BaseView>: Presenter<V> {
 
     private var v: V? = null
 
-    override fun attachView(mvpView: BaseView?) {
+    override fun attachView(mvpView: V?) {
         this.v = mvpView
     }
 

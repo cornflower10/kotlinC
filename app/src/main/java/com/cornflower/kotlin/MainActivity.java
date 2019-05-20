@@ -1,7 +1,9 @@
-package kotlin.cornflower.com;
+package com.cornflower.kotlin;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import kotlin.cornflower.com.R;
 
 public class MainActivity extends AppCompatActivity {
 
