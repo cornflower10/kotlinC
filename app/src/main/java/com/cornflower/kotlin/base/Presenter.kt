@@ -11,4 +11,5 @@ interface Presenter<V: BaseView>{
      * presenter与view解绑
      */
      fun detachView()
+
 }
