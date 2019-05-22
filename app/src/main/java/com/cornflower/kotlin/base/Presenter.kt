@@ -1,11 +1,11 @@
 package com.cornflower.kotlin.base
 
-interface Presenter<V: BaseView>{
+interface Presenter<M,V: BaseView>{
     /**
      * presenter和对应的view绑定
      * @param mvpView  目标view
      */
-     fun attachView(mvpView: V?)
+     fun attachView(model: M?,mvpView: V?)
 
     /**
      * presenter与view解绑
