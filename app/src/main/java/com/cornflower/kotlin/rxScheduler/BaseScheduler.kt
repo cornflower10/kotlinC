@@ -28,11 +28,11 @@ import org.reactivestreams.Publisher
                 .observeOn(observeOnScheduler)
     }
 
+
     override fun apply(upstream: Observable<T>): ObservableSource<T> {
         return upstream.subscribeOn(subscribeOnScheduler)
                 .observeOn(observeOnScheduler)
     }
-
     override fun apply(upstream: Single<T>): SingleSource<T> {
         return upstream.subscribeOn(subscribeOnScheduler)
                 .observeOn(observeOnScheduler)

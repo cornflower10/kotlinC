@@ -33,7 +33,7 @@ open class BaseMvpPresenter<M,V: BaseView>: Presenter<M,V> {
     }
 
     fun addSubscription(disposable: Disposable) {
-        compositeDisposable?.add(disposable)
+        compositeDisposable.add(disposable)
     }
 
 }

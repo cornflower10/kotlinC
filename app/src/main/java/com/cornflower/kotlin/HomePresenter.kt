@@ -1,6 +1,5 @@
 package com.cornflower.kotlin
 
-import android.util.Log
 import com.cornflower.kotlin.base.BaseMvpPresenter
 import com.cornflower.kotlin.rxScheduler.SchedulerUtils
 
@@ -10,20 +9,16 @@ import com.cornflower.kotlin.rxScheduler.SchedulerUtils
 class HomePresenter: BaseMvpPresenter<HomeModel,HomeView>(){
 
     fun homeData(){
-        try {
-
 
         getModel()?.
                 HomeModelData()?.
                 compose(SchedulerUtils.ioToMain())?.subscribe({data->
             getView()?.let{
-                getView()?.dataSuccess(data)
+                it.dataSuccess(data)
             }
         }, { t->getView()?.let {
-            getView()?.onError(t.message)
-        }})
-        } catch (e:Exception){
-            Log.e("e",e.message)
-        }
+           it.onError(t.message)
+        }})?.let { addSubscription(it) }
     }
+
 }
