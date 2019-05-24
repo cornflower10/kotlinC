@@ -1,9 +1,8 @@
 package com.cornflower.kotlin
 
+import android.util.Log
 import com.cornflower.kotlin.base.BaseMvpPresenter
-import com.cornflower.kotlin.base.HomeModel
 import com.cornflower.kotlin.rxScheduler.SchedulerUtils
-import io.reactivex.functions.Consumer
 
 /**
  * Created by xiejingbao on 2019/5/20.
@@ -11,14 +10,20 @@ import io.reactivex.functions.Consumer
 class HomePresenter: BaseMvpPresenter<HomeModel,HomeView>(){
 
     fun homeData(){
+        try {
+
+
         getModel()?.
                 HomeModelData()?.
-                compose(SchedulerUtils.ioToMain())?.subscribe(Consumer {user->
+                compose(SchedulerUtils.ioToMain())?.subscribe({data->
             getView()?.let{
-                getView()?.dataSuccess(user)
+                getView()?.dataSuccess(data)
             }
-        }, Consumer { t->getView()?.let {
+        }, { t->getView()?.let {
             getView()?.onError(t.message)
         }})
+        } catch (e:Exception){
+            Log.e("e",e.message)
+        }
     }
 }

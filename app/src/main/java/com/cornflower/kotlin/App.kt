@@ -1,12 +1,21 @@
 package com.cornflower.kotlin
 
-import com.cornflower.kotlin.base.BaseApplication
+import android.app.Application
+import android.content.Context
+import com.hjq.toast.ToastUtils
+import kotlin.properties.Delegates
 
 /**
  * Created by xiejingbao on 2019/5/22.
  */
-class App :BaseApplication() {
+class App : Application() {
    companion object {
-       var context = BaseApplication.context
+       open var context: Context by Delegates.notNull()
    }
+
+    override fun onCreate() {
+        super.onCreate()
+         context = this
+        ToastUtils.init(this)
+    }
 }

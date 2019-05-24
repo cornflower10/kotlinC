@@ -3,6 +3,7 @@ package com.cornflower.kotlin.net
 import com.cornflower.kotlin.App
 import com.cornflower.kotlin.api.ApiService
 import com.cornflower.kotlin.api.Constant
+import com.cornflower.kotlin.utils.LogManager
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -101,7 +102,10 @@ object RetrofitManager{
 
     private fun getOkHttpClient(): OkHttpClient {
         //添加一个log拦截器,打印所有的log
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger{
+            log->LogManager.i(log)
+        })
+
         //可以设置请求过滤的水平,body,basic,headers
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 

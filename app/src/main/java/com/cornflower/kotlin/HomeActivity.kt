@@ -2,12 +2,17 @@ package com.cornflower.kotlin
 
 import android.os.Bundle
 import com.cornflower.kotlin.base.BaseMvpActivity
-import com.cornflower.kotlin.base.HomeModel
+import com.cornflower.kotlin.base.CommonResEntity
+import com.cornflower.kotlin.utils.ToastU
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.cornflower.com.R
 
 
 class HomeActivity : BaseMvpActivity<HomeModel, HomeView,HomePresenter>(), HomeView {
+    override fun dataSuccess(data: CommonResEntity<Unit>) {
+       tv.text = data.message
+    }
+
 
     override fun initModel(): HomeModel?  = HomeModel()
 
@@ -18,9 +23,13 @@ class HomeActivity : BaseMvpActivity<HomeModel, HomeView,HomePresenter>(), HomeV
 
     override fun initData(savedInstanceState: Bundle?) {
         tv.text = "mvp"
+        presenter?.homeData()
     }
 
     override fun contentView() = R.layout.activity_main
 
-
+    override fun onError(msg: String?) {
+        super.onError(msg)
+        ToastU.showMsg(msg)
+    }
 }
