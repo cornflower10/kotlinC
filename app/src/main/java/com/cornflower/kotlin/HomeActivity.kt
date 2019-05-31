@@ -23,6 +23,7 @@ class HomeActivity : BaseMvpActivity<HomeModel, HomeView,HomePresenter>(), HomeV
     override fun initData(savedInstanceState: Bundle?) {
         tv.text = "mvp"
         presenter?.homeData()
+        tv.setOnClickListener{ forward(MainActivity::class.java) }
     }
 
     override fun contentView() = R.layout.activity_main
