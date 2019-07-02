@@ -1,6 +1,7 @@
 package com.cornflower.kotlin
 
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.cornflower.kotlin.base.BaseMvpActivity
 import com.cornflower.kotlin.utils.ToastU
 import kotlinx.android.synthetic.main.activity_main.*
@@ -9,7 +10,7 @@ import kotlin.cornflower.com.R
 
 class HomeActivity : BaseMvpActivity<HomeModel, HomeView,HomePresenter>(), HomeView {
     override fun dataSuccess(data: String) {
-       tv.text = data
+//       tv.text = data
     }
 
 
@@ -21,9 +22,11 @@ class HomeActivity : BaseMvpActivity<HomeModel, HomeView,HomePresenter>(), HomeV
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        tv.text = "mvp"
-        presenter?.homeData()
-        tv.setOnClickListener{ forward(MainActivity::class.java) }
+//        tv.text = "mvp"
+//        presenter?.homeData()
+//        tv.setOnClickListener{ forward(MainActivity::class.java) }
+        Glide.with(this)
+                .load("http://172.16.123.163:7788/static/images/help_complaints.png").listener(Listener()).into(iv)
     }
 
     override fun contentView() = R.layout.activity_main

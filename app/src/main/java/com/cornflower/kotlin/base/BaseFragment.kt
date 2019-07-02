@@ -1,14 +1,14 @@
 package com.cornflower.kotlin.base
 
+import android.app.Fragment
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.Fragment
 import com.cornflower.kotlin.utils.ToastU
 
 /**
  * Created by xiejingbao on 2019/5/31.
  */
-open class BaseFragment:Fragment() {
+open class BaseFragment: Fragment() {
      var mContext: Context? = null
     override fun onAttach(context: Context?) {
         super.onAttach(context)
