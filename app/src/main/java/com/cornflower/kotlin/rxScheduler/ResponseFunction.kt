@@ -14,7 +14,7 @@ class ResponseFunction<T> :Function<CommonResEntity<T>,ObservableSource<T>>{
     override fun apply(t: CommonResEntity<T>): ObservableSource<T>? {
         if(t.success)
         {
-            return Observable.just(t.data)
+            return Observable.just(null)
         }else{
             if (Constant.CODES.contains(t.code)){
                 return Observable.error<CommonResEntity<T>>(ApiException(t.code)) as? ObservableSource<T>
